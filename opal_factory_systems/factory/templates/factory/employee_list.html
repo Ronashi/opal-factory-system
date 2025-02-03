@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Employees</h2>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Clock-In Time</th>
+        <th>Clock-Out Time</th>
+    </tr>
+    {% for employee in employees %}
+    <tr>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.clock_in_time|default:"Not Clocked In" }}</td>
+        <td>{{ employee.clock_out_time|default:"Not Clocked Out" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
