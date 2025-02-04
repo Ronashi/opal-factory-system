@@ -1,20 +1,43 @@
-{% extends 'base.html' %}
+{% extends 'factory/base.html' %}
 {% block content %}
 
 <h2>Employees</h2>
-<table border="1">
-    <tr>
-        <th>Name</th>
-        <th>Clock-In Time</th>
-        <th>Clock-Out Time</th>
-    </tr>
-    {% for employee in employees %}
-    <tr>
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.clock_in_time|default:"Not Clocked In" }}</td>
-        <td>{{ employee.clock_out_time|default:"Not Clocked Out" }}</td>
-    </tr>
-    {% endfor %}
+
+<!-- Search Form -->
+<form method="get" class="mb-4">
+    {{ search_form.as_p }}
+    <button type="submit" class="btn btn-secondary">Search</button>
+</form>
+
+<form method="post" class="mb-4">
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-primary">Add Employee</button>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Clock-In Time</th>
+            <th>Clock-Out Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.clock_in_time|default:"Not Clocked In" }}</td>
+            <td>{{ employee.clock_out_time|default:"Not Clocked Out" }}</td>
+            <td>
+                <a href="{% url 'delete_employee' employee.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
 {% endblock %}
