@@ -52,6 +52,27 @@ def order_list(request):
         form = OrderForm()
     return render(request, 'factory/order_list.html', {'orders': orders, 'form': form, 'search_form': search_form})
 
+# passing data for the chart 
+def dashboard(request):    
+    total_inventory = Inventory.objects.count()
+    total_employees = Employee.objects.count()
+    total_orders = Order.objects.count()
+    recent_orders = Order.objects.order_by('-created_at')[:5]
+
+    # Data for the inventory chart
+    inventory_items = Inventory.objects.all()
+    inventory_labels = [item.name for item in inventory_items]
+    inventory_quantities = [item.quantity for item in inventory_items]
+
+    context = {
+        'total_inventory': total_inventory,
+        'total_employees': total_employees,
+        'total_orders': total_orders,
+        'recent_orders': recent_orders,
+        'inventory_labels': inventory_labels,
+        'inventory_quantities': inventory_quantities,
+    }
+    return render(request, 'factory/dashboard.html', context)
 
 
 def edit_inventory(request, id):

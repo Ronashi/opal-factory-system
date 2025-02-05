@@ -33,5 +33,20 @@
         {% endfor %}
     </tbody>
 </table>
+<script>
+    const orderSocket = new WebSocket(
+        'ws://' + window.location.host + '/ws/orders/'
+    );
+
+    orderSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        console.log('Message:', data);
+        // Update the order status in real-time
+    };
+
+    orderSocket.onclose = function (e) {
+        console.error('Order socket closed unexpectedly');
+    };
+</script>
 
 {% endblock %}
