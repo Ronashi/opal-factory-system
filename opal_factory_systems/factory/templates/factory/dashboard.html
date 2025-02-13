@@ -50,30 +50,4 @@
         {% endfor %}
     </tbody>
 </table>
-
-<h3 class="mt-5">Inventory Overview</h3>
-<canvas id="inventoryChart" width="400" height="200"></canvas>
-<script>
-    const ctx = document.getElementById('inventoryChart').getContext('2d');
-    const inventoryChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: {{ inventory_labels|safe }},
-            datasets: [{
-                label: 'Quantity',
-                data: {{ inventory_quantities|safe }},
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
 {% endblock %}
