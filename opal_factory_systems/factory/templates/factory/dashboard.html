@@ -1,53 +1,153 @@
-{% extends 'base.html' %}
+{% extends 'factory/base.html' %}
+
 {% block content %}
-<h2 class="mb-4">Dashboard</h2>
-<div class="row">
+<h2 class="mb-4 text-center" data-aos="fade-down">Dashboard</h2>
+
+<!-- Statistics Cards -->
+<div class="row text-center">
     <div class="col-md-4">
-        <div class="card text-white bg-primary">
+        <div class="card text-white bg-primary shadow-lg card-hover" data-aos="zoom-in">
             <div class="card-header">Inventory</div>
             <div class="card-body">
-                <h5 class="card-title">{{ total_inventory }} Items</h5>
-                <a href="{% url 'inventory_list' %}" class="btn btn-light">View Inventory</a>
+                <h5 class="card-title counter" data-count="{{ total_inventory }}">0</h5>
+                <a href="{% url 'inventory_list' %}" class="btn btn-light btn-hover">View Inventory</a>
             </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card text-white bg-success">
+        <div class="card text-white bg-success shadow-lg card-hover" data-aos="zoom-in" data-aos-delay="100">
             <div class="card-header">Employees</div>
             <div class="card-body">
-                <h5 class="card-title">{{ total_employees }} Employees</h5>
-                <a href="{% url 'employee_list' %}" class="btn btn-light">View Employees</a>
+                <h5 class="card-title counter" data-count="{{ total_employees }}">0</h5>
+                <a href="{% url 'employee_list' %}" class="btn btn-light btn-hover">View Employees</a>
             </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card text-white bg-info">
+        <div class="card text-white bg-info shadow-lg card-hover" data-aos="zoom-in" data-aos-delay="200">
             <div class="card-header">Orders</div>
             <div class="card-body">
-                <h5 class="card-title">{{ total_orders }} Orders</h5>
-                <a href="{% url 'order_list' %}" class="btn btn-light">View Orders</a>
+                <h5 class="card-title counter" data-count="{{ total_orders }}">0</h5>
+                <a href="{% url 'order_list' %}" class="btn btn-light btn-hover">View Orders</a>
             </div>
         </div>
     </div>
 </div>
 
-<h3 class="mt-5">Recent Orders</h3>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Customer Name</th>
-            <th>Status</th>
-            <th>Created At</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for order in recent_orders %}
-        <tr>
-            <td>{{ order.customer_name }}</td>
-            <td>{{ order.status }}</td>
-            <td>{{ order.created_at }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<!-- Charts Section -->
+<div class="row mt-5">
+    <div class="col-md-6">
+        <h3 class="text-center" data-aos="fade-down">Inventory Overview</h3>
+        <canvas id="inventoryChart"></canvas>
+    </div>
+    <div class="col-md-6">
+        <h3 class="text-center" data-aos="fade-down">Order Status Breakdown</h3>
+        <canvas id="orderStatusChart"></canvas>
+    </div>
+</div>
+
+<!-- Recent Orders Table -->
+<h3 class="mt-5 text-center" data-aos="fade-down">Recent Orders</h3>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Customer Name</th>
+                <th>Status</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody id="recent-orders">
+            {% for order in recent_orders %}
+            <tr data-aos="fade-up">
+                <td>{{ order.customer_name }}</td>
+                <td>
+                    <span class="badge 
+                        {% if order.status == 'Pending' %} bg-warning 
+                        {% elif order.status == 'Completed' %} bg-success 
+                        {% else %} bg-secondary {% endif %}">
+                        {{ order.status }}
+                    </span>
+                </td>
+                <td>{{ order.created_at|date:"M d, Y H:i" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="text-center">No recent orders</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Animated Counter
+        document.querySelectorAll('.counter').forEach(counter => {
+            let start = 0;
+            let end = parseInt(counter.getAttribute('data-count'));
+            let duration = 1500;
+            let stepTime = Math.abs(Math.floor(duration / end));
+            let timer = setInterval(function () {
+                start++;
+                counter.innerText = start;
+                if (start == end) clearInterval(timer);
+            }, stepTime);
+        });
+
+        // Inventory Chart
+        var ctxInventory = document.getElementById('inventoryChart').getContext('2d');
+        var inventoryChart = new Chart(ctxInventory, {
+            type: 'bar',
+            data: {
+                labels: {{ inventory_labels|safe }},
+                datasets: [{
+                    label: 'Quantity Available',
+                    data: {{ inventory_quantities|safe }},
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: { responsive: true, scales: { y: { beginAtZero: true } } }
+        });
+
+        // Order Status Chart
+        var ctxOrderStatus = document.getElementById('orderStatusChart').getContext('2d');
+        var orderStatusChart = new Chart(ctxOrderStatus, {
+            type: 'pie',
+            data: {
+                labels: ['Pending', 'In Progress', 'Completed'],
+                datasets: [{
+                    label: 'Order Status',
+                    data: [{{ pending_orders }}, {{ total_orders|add:"-pending_orders"|add:"-completed_orders" }}, {{ completed_orders }}],
+                    backgroundColor: ['#ffc107', '#007bff', '#28a745']
+                }]
+            }
+        });
+
+        // WebSocket for Real-time Orders
+        const orderSocket = new WebSocket('ws://' + window.location.host + '/ws/orders/');
+        orderSocket.onmessage = function (e) {
+            const data = JSON.parse(e.data);
+            const recentOrders = document.getElementById("recent-orders");
+
+            let newRow = `<tr>
+                <td>${data.customer_name}</td>
+                <td><span class="badge ${data.status === 'Pending' ? 'bg-warning' :
+                                          data.status === 'Completed' ? 'bg-success' : 'bg-secondary'}">${data.status}</span></td>
+                <td>${data.created_at}</td>
+            </tr>`;
+            
+            recentOrders.innerHTML = newRow + recentOrders.innerHTML;
+        };
+        orderSocket.onclose = function (e) {
+            console.error("Order WebSocket closed unexpectedly.");
+        };
+    });
+</script>
 {% endblock %}

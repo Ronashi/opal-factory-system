@@ -607,3 +607,386 @@ Traceback (most recent call last):
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'edit_inventory' not found. 'edit_inventory' is not a valid view function or pattern name.
 "GET /signup/ HTTP/1.1" 500 171587
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/opal_factory_systems/factory/views.py", line 114, in dashboard
+    return render(request, 'factory/dashboard.html', context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 702, in __init__
+    self.args_check(filter_name, filter_func, args)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 764, in args_check
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: add requires 2 arguments, 1 provided
+"GET /dashboard/ HTTP/1.1" 500 212429
+Internal Server Error: /inventory/
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/opal_factory_systems/factory/views.py", line 60, in inventory_list
+    return render(request, 'factory/inventory_list.html', {'inventory': inventory, 'form': form, 'search_form': search_form})
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'export_inventory_csv' not found. 'export_inventory_csv' is not a valid view function or pattern name.
+"GET /inventory/ HTTP/1.1" 500 182076
+Internal Server Error: /inventory/
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/opal_factory_systems/factory/views.py", line 60, in inventory_list
+    return render(request, 'factory/inventory_list.html', {'inventory': inventory, 'form': form, 'search_form': search_form})
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'export_inventory_csv' not found. 'export_inventory_csv' is not a valid view function or pattern name.
+"GET /inventory/ HTTP/1.1" 500 182076
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/opal_factory_systems/factory/views.py", line 114, in dashboard
+    return render(request, 'factory/dashboard.html', context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 702, in __init__
+    self.args_check(filter_name, filter_func, args)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 764, in args_check
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: add requires 2 arguments, 1 provided
+"GET /dashboard/ HTTP/1.1" 500 212429
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/engine.py", line 163, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/opal_factory_systems/factory/views.py", line 114, in dashboard
+    return render(request, 'factory/dashboard.html', context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 109, in render
+    reraise(exc, self.backend)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+"GET /dashboard/ HTTP/1.1" 500 149556
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/engine.py", line 163, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/opal_factory_systems/factory/views.py", line 114, in dashboard
+    return render(request, 'factory/dashboard.html', context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 109, in render
+    reraise(exc, self.backend)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+"GET /dashboard/ HTTP/1.1" 500 149556
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/engine.py", line 163, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: base.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/opal_factory_systems/factory/views.py", line 114, in dashboard
+    return render(request, 'factory/dashboard.html', context)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 109, in render
+    reraise(exc, self.backend)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: base.html
+"GET /dashboard/ HTTP/1.1" 500 149714
+Internal Server Error: /employees/edit/1/
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/opal_factory_systems/factory/views.py", line 144, in edit_employee
+    return render(request, 'factory/edit_employee.html', {'form': form})
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: factory/edit_employee.html
+"GET /employees/edit/1/ HTTP/1.1" 500 96666
+Internal Server Error: /inventory/edit/1/
+Traceback (most recent call last):
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/opal_factory_systems/factory/views.py", line 146, in edit_inventory
+    return render(request, 'factory/edit_inventory.html', {'form': form})
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/mellow/Desktop/Openings/opalus Factory/opal-factory-system/venv/lib/python3.10/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: factory/edit_inventory.html
+"GET /inventory/edit/1/ HTTP/1.1" 500 96665

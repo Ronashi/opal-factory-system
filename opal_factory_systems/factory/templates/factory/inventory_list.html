@@ -1,41 +1,90 @@
 {% extends 'factory/base.html' %}
 {% block content %}
 
+<h2 class="mb-4" data-aos="fade-down">Inventory</h2>
 
-<h2 class="mb-4">Inventory</h2>
-<form method="get" class="mb-4">
-    {{ search_form.as_p }}
-    <button type="submit" class="btn btn-secondary">Search</button>
-</form>
-<a href="{% url 'export_inventory_csv' %}" class="btn btn-success mb-3">Export Inventory Report</a>
-<form method="post" class="mb-4">
-    {% csrf_token %}
-    <div class="mb-3">
-        {{ form.as_p }}
+<!-- Search Form -->
+<form method="get" class="mb-4" data-aos="fade-right">
+    <div class="row g-2">
+        <div class="col-md-8">
+            {{ search_form.as_p }}
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-secondary w-100 btn-hover">Search</button>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">Add Inventory</button>
 </form>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Threshold</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in inventory %}
-        <tr>
-            <td>{{ item.name }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.threshold }}</td>
-            <td>
-                <a href="{% url 'edit_inventory' item.id %}" class="btn btn-warning btn-sm">Edit</a>
-                <a href="{% url 'delete_inventory' item.id %}" class="btn btn-danger btn-sm">Delete</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+
+<!-- Export Report -->
+<a href="{% url 'export_inventory_csv' %}" class="btn btn-success mb-3 btn-hover" data-aos="fade-left">
+    <i class="fas fa-file-download"></i> Export Inventory Report
+</a>
+
+<!-- Add Inventory Form -->
+<form method="post" class="mb-4 p-3 border rounded shadow" data-aos="fade-up">
+    {% csrf_token %}
+    <div class="row g-3">
+        <div class="col-md-8">
+            {{ form.as_p }}
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100 btn-hover">Add Inventory</button>
+        </div>
+    </div>
+</form>
+
+<!-- Inventory Table -->
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Threshold</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="inventory-table">
+            {% for item in inventory %}
+            <tr data-aos="fade-up">
+                <td>{{ item.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>
+                    <span class="badge 
+                        {% if item.quantity < item.threshold %} bg-danger 
+                        {% else %} bg-success {% endif %}">
+                        {{ item.threshold }}
+                    </span>
+                </td>
+                <td>
+                    <a href="{% url 'edit_inventory' item.id %}" class="btn btn-warning btn-sm btn-hover">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <button onclick="confirmDelete({{ item.id }})" class="btn btn-danger btn-sm btn-hover">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4" class="text-center">No inventory items found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Confirmation before deleting
+        window.confirmDelete = function (id) {
+            if (confirm("Are you sure you want to delete this item?")) {
+                window.location.href = "{% url 'delete_inventory' 0 %}".replace('0', id);
+            }
+        };
+    });
+</script>
 {% endblock %}

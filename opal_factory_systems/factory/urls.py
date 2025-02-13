@@ -6,6 +6,7 @@ urlpatterns = [
     path('inventory/', views.inventory_list, name='inventory_list'),
     path('inventory/edit/<int:id>/', views.edit_inventory, name='edit_inventory'),
     path('inventory/delete/<int:id>/', views.delete_inventory, name='delete_inventory'),
+    path('inventory/export/', views.export_inventory_csv, name='export_inventory_csv'),
 
     path('employees/', views.employee_list, name='employee_list'),
     path('employees/edit/<int:id>/', views.edit_employee, name='edit_employee'),

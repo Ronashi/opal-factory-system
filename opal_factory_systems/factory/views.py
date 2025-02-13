@@ -103,15 +103,32 @@ def order_list(request):
 # Dashboard View
 @login_required
 def dashboard(request):
+    total_inventory = Inventory.objects.count()
+    total_employees = Employee.objects.count()
+    total_orders = Order.objects.count()
+    completed_orders = Order.objects.filter(status='Completed').count()
+    pending_orders = Order.objects.filter(status='Pending').count()
+    in_progress_orders = total_orders - (pending_orders + completed_orders)
+
+    recent_orders = Order.objects.order_by('-created_at')[:5]
+
+    inventory_items = Inventory.objects.all()
+    inventory_labels = [item.name for item in inventory_items]
+    inventory_quantities = [item.quantity for item in inventory_items]
+
     context = {
-        'total_inventory': Inventory.objects.count(),
-        'total_employees': Employee.objects.count(),
-        'total_orders': Order.objects.count(),
-        'completed_orders': Order.objects.filter(status='Completed').count(),
-        'pending_orders': Order.objects.filter(status='Pending').count(),
-        'recent_orders': Order.objects.order_by('-created_at')[:5],
+        "total_inventory": total_inventory,
+        "total_employees": total_employees,
+        "total_orders": total_orders,
+        "completed_orders": completed_orders,
+        "pending_orders": pending_orders,
+        "in_progress_orders": in_progress_orders,
+        "recent_orders": recent_orders,
+        "inventory_labels": inventory_labels,
+        "inventory_quantities": inventory_quantities,
     }
-    return render(request, 'factory/dashboard.html', context)
+
+    return render(request, "factory/dashboard.html", context)
 
 
 # Edit Inventory
